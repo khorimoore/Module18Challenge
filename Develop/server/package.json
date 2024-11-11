@@ -14,11 +14,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "apollo-server-express": "^3.13.0",
     "bcrypt": "^4.0.1",
+    "bcryptjs": "^2.4.3",
     "brcypt": "^1.0.1",
-    "express": "^4.19.2",
+    "express": "^4.21.1",
+    "graphql": "^16.9.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^8.0.0"
+    "jwt-decode": "^4.0.0",
+    "mongoose": "^8.8.1"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
