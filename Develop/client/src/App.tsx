@@ -1,7 +1,7 @@
 import React from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import { useQuery, gql } from '@apollo/client';
-
+import './App.css';
 // GraphQL query to get the current user
 const GET_USER = gql`
   query Me {
