@@ -11,12 +11,13 @@ interface JwtPayload {
 }
 
 // Middleware to authenticate the token and attach user data to the request
-export const authenticateToken = (req: Request, res: Response, next: NextFunction) => {
+export const authenticateToken = (req: Request, res: Response, next: NextFunction): void => {
   const authHeader = req.headers.authorization;
 
   // Check if the token exists
   if (!authHeader) {
-    return res.sendStatus(401); // Unauthorized if no token provided
+    res.sendStatus(401); // Unauthorized if no token provided
+    return;
   }
 
   const token = authHeader.split(' ')[1]; // Extract the token part (if format is "Bearer <token>")
@@ -24,7 +25,8 @@ export const authenticateToken = (req: Request, res: Response, next: NextFunctio
 
   jwt.verify(token, secretKey, (err, user) => {
     if (err) {
-      return res.sendStatus(403); // Forbidden if token is invalid
+      res.sendStatus(403); // Forbidden if token is invalid
+      return;
     }
 
     // Attach user data to the request
