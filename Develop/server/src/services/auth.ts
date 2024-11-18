@@ -36,9 +36,17 @@ export const authenticateToken = (req: Request, res: Response, next: NextFunctio
 };
 
 // Function to create and sign a JWT token for user authentication
-export const signToken = ({ username, email, _id }: { username: string; email: string; _id: unknown }) => {
+export const signToken = (
+  username: string,
+  email: string,
+  _id: string
+): string => {
+  // Create the payload
   const payload = { username, email, _id };
-  const secretKey = process.env.JWT_SECRET_KEY || '';
 
-  return jwt.sign(payload, secretKey, { expiresIn: '1h' });
+  // Fetch the secret key from the environment variables
+  const secretKey = process.env.JWT_SECRET_KEY || "";
+
+  // Sign and return the JWT
+  return jwt.sign(payload, secretKey, { expiresIn: "1h" });
 };
